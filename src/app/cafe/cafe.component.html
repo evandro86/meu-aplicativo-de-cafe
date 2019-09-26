@@ -35,7 +35,7 @@
   <mat-card>
     <mat-card-title>Classificações</mat-card-title>
     <mat-card-subtitle>Classificação Geral</mat-card-subtitle>
-    <mat-slider max="10" thumbLabel name="classicacao" [(ngModel)]="cafe.classificacao" tickInterval="1"></mat-slider>
+    <mat-slider max="10" thumbLabel name="classificacao" [(ngModel)]="cafe.classificacao" tickInterval="1"></mat-slider>
     <mat-card-subtitle><mat-slide-toggle #seletor_de_degustacao [checked]="classificacaoDegustacaoHabilitado" (change)="verificaClassificacaoDegustacao(seletor_de_degustacao.checked)">Classificações de Degustação</mat-slide-toggle></mat-card-subtitle>
     <section id="degustacao" *ngIf="seletor_de_degustacao.checked">
       <label>Aroma</label>
