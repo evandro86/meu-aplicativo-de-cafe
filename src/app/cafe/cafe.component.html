@@ -1,0 +1,75 @@
+<form>
+
+  <mat-card>
+    <mat-card-title>Informação Básica do Café</mat-card-title>
+    <mat-form-field>
+        <input matInput placeholder="Nome do Café"
+        name="nome" [(ngModel)]="cafe.nome">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Tipos de Café</mat-label>
+        <mat-select [(ngModel)]="cafe.tipo" name='tipo'>
+          <mat-option *ngFor="let tipo of tiposCafe" [value]="tipo">
+            {{ tipo }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Informações do Local</mat-card-title>
+    <mat-form-field>
+        <input matInput placeholder="Nome do Local"
+        name="local" [(ngModel)]="cafe.local">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Endereço"
+        name="endereco" [(ngModel)]="cafe.localizacao.endereco">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Cidade"
+        name="cidade" [(ngModel)]="cafe.localizacao.cidade">
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Classificações</mat-card-title>
+    <mat-card-subtitle>Classificação Geral</mat-card-subtitle>
+    <mat-slider max="10" thumbLabel name="classicacao" [(ngModel)]="cafe.classificacao" tickInterval="1"></mat-slider>
+    <mat-card-subtitle><mat-slide-toggle #seletor_de_degustacao [checked]="classificacaoDegustacaoHabilitado" (change)="verificaClassificacaoDegustacao(seletor_de_degustacao.checked)">Classificações de Degustação</mat-slide-toggle></mat-card-subtitle>
+    <section id="degustacao" *ngIf="seletor_de_degustacao.checked">
+      <label>Aroma</label>
+      <mat-slider max="10" thumbLabel name="aroma" [(ngModel)]="cafe.classificacaoDegustacao.aroma" tickInterval="1"></mat-slider>
+      <label>Consistência</label>
+      <mat-slider max="10" thumbLabel name="consistencia" [(ngModel)]="cafe.classificacaoDegustacao.consistencia" tickInterval="1"></mat-slider>
+      <label>Sabor</label>
+      <mat-slider max="10" thumbLabel name="sabor" [(ngModel)]="cafe.classificacaoDegustacao.sabor" tickInterval="1"></mat-slider>
+      <label>Intensidade</label>
+      <mat-slider max="10" thumbLabel name="intensidade" [(ngModel)]="cafe.classificacaoDegustacao.intensidade" tickInterval="1"></mat-slider>
+      <label>Doçura</label>
+      <mat-slider max="10" thumbLabel name="docura" [(ngModel)]="cafe.classificacaoDegustacao.docura" tickInterval="1"></mat-slider>
+      <label>Sabor Posterior</label>
+      <mat-slider max="10" thumbLabel name="saborPosterior" [(ngModel)]="cafe.classificacaoDegustacao.saborPosterior" tickInterval="1"></mat-slider>
+    </section>
+  </mat-card>
+
+  <mat-card>
+      <mat-form-field>
+          <textarea matInput placeholder="Observações"
+            name="observacoes" [(ngModel)]="cafe.observacoes">
+          </textarea>
+      </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+      <button mat-raised-button (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button color="accent" (click)="salvar()">Salvar</button>
+  </mat-card>
+
+  <!--
+  <mat-card>
+    {{ cafe | json }}
+  </mat-card>
+  -->
+
+</form>
