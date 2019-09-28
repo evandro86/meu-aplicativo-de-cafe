@@ -121,7 +121,11 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "https://evandro86.github.io/meu-aplicativo-de-cafe/",
+            "name": "angular",
+            "email": "evandro86@live.com"
+          }
         }
       }
     }
