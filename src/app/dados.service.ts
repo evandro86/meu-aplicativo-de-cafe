@@ -10,8 +10,9 @@ export class DadosService {
 
   constructor(private http: HttpClient) { }
 
- public endpoint = 'http://localhost:3000';
+ // public endpoint = 'http://localhost:3000';
   // public endpoint = 'http://192.168.0.17:3000';
+  endpoint = 'https://meu-aplicativo-de-cafe-api.herokuapp.com';
 
   get(cafeId: string, callback) {
     this.http.get(`${this.endpoint}/cafes/${cafeId}`)
